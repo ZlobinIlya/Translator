@@ -1,9 +1,6 @@
 package com.tinkoff.java.model;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Date;
 
 public class Event implements Translatable {
@@ -32,9 +28,6 @@ public class Event implements Translatable {
         this.firstText = firstText;
         this.lang = lang;
 
-    }
-
-    public Event() {
     }
 
     public Event(String ip, String first_text) {

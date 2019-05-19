@@ -25,9 +25,6 @@ public class ParseResalt {
         return text;
     }
 
-    public ParseResalt() {
-    }
-
     public ParseResalt(int code, String lang, String[] text) {
         this.code = code;
         this.lang = lang;
