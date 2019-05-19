@@ -42,7 +42,6 @@ public class EventTranslate extends HttpServlet {
 
 
         String lang = req.getParameter("language");
-        System.out.println(lang);
         String firstText = req.getParameter("firstText");
 
         Translatable event = new Event(req.getRemoteAddr(), new Date(), lang, firstText);

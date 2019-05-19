@@ -15,12 +15,14 @@ public class Event implements Translatable {
     private static final String AND = "&";
     private static final String KEY = "trnsl.1.1.20190519T092157Z.ceecc02dc94cb0e9.7e9e61ed26bc1c0ffbb8ef3dc73811c873413b40";
     private static final String ADRESS = "https://translate.yandex.net/api/v1.5/tr.json/translate?";
+    private static final String SPLIT_TEXT = " ";
     private String ip;
     private Date date;
     private String lang;
     private String firstText;
     private String secondText;
     private String req;
+    private StringBuffer sectext = new StringBuffer();
 
     public Event(String ip, Date date, String lang, String firstText) {
         this.ip = ip;
@@ -38,8 +40,12 @@ public class Event implements Translatable {
 
     public void translate() throws IOException {
 
-        req = ADRESS + "key=" + KEY + AND + "text=" + firstText + AND + "lang=" + lang;
-        parse();
+        String[] text = firstText.split(SPLIT_TEXT);
+        for (String s : text) {
+            req = ADRESS + "key=" + KEY + AND + "text=" + s + AND + "lang=" + lang;
+            parse();
+        }
+        setSecondText(sectext.toString());
 
     }
 
@@ -48,7 +54,9 @@ public class Event implements Translatable {
         Gson gson = new Gson();
         ParseResalt parseResalt = gson.fromJson(translateText, ParseResalt.class);
         String[] text = parseResalt.getText();
-        setSecondText(text[0]);
+        sectext.append(text[0]+SPLIT_TEXT);
+
+
 
     }
 
