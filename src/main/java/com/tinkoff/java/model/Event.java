@@ -45,8 +45,6 @@ public class Event implements Translatable {
 
     private void parse() throws IOException {
         String translateText = requestToYandex();
-
-
         Gson gson = new Gson();
         ParseResalt parseResalt = gson.fromJson(translateText, ParseResalt.class);
         String[] text = parseResalt.getText();

@@ -25,8 +25,6 @@ public class EventTranslate extends HttpServlet {
     @Override
     public void init() throws ServletException {
         events = new CopyOnWriteArrayList<>();
-//        events.add(new Event("1.0.0.0.0.0", new Date(), "en", "When you talk"));
-//        events.add(new Event("3.0.0.0.0.0", new Date(), "en", "When you talk"));
     }
 
     @Override

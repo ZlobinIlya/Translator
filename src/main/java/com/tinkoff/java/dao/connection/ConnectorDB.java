@@ -13,6 +13,7 @@ public class ConnectorDB {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         FileInputStream fileInputStream;
         Properties prop = new Properties();
+        Connection con = null;
 
         try {
             fileInputStream = new FileInputStream(PATH_TO_PROPERTIES_postgres);
@@ -24,6 +25,11 @@ public class ConnectorDB {
         String user = prop.getProperty("user");
         String pass = prop.getProperty("password");
         Class.forName(prop.getProperty("driver"));
-        return DriverManager.getConnection(url, user, pass);
+        try {
+             con = DriverManager.getConnection(url, user, pass);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return con;
     }
 }
